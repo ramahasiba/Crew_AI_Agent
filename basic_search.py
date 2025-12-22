@@ -24,7 +24,12 @@ def summarize_url(url: str) -> str:
         expected_output="A comprehensive summary of the article in no more than 100 words."
     )
 
-    crew = Crew(agents=[agent], tasks=[task])
+    crew = Crew(
+        agents=[agent], 
+        tasks=[task],
+        tracing=True,  # Enable built-in tracing
+        verbose=True        
+        )
     result = crew.kickoff()
     return str(result)
 
